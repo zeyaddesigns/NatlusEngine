@@ -1,29 +1,26 @@
 ﻿using Enum;
 using States.Base;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Input;
+using Objects;
 
 namespace States
 {
     public class GameplayState : BaseGameState
     {
-        public override void LoadContent(ContentManager contentManager)
+        private const string PlayerFighter = "fighter";
+        private const string BackgroundTexture = "Barren";
+
+        public override void LoadContent()
         {
-            
+            AddGameObject(new SplashImage(LoadTexture(BackgroundTexture)));
+            AddGameObject(new PlayerSprite(LoadTexture(PlayerFighter)));
         }
 
-        public override void UnloadContent(ContentManager contentManager)
-        {
-            contentManager.Unload();
-        }
-
-        // checks if a gamepad’s back button is pressed or if the
-        // keyboard’s Enter key is pressed.
         public override void HandleInput()
         {
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed ||
-                Keyboard.GetState().IsKeyDown(Keys.Enter))
+            var state = Keyboard.GetState();
+
+            if (state.IsKeyDown(Keys.Escape))
             {
                 NotifyEvent(Events.GAME_QUIT);
             }

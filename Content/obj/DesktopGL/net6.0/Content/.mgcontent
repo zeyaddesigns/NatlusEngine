@@ -4,9 +4,15 @@
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
+    <File>C:/Users/ZeyadAlsultan/Dropbox/Our Life/Zeyad/Portal/Dev Hub/C#/NatlusEngine/NatlusEngine/Content/../../../monogame-mastery-main/chapter-05/assets/png/Empty.png</File>
+    <File>C:/Users/ZeyadAlsultan/Dropbox/Our Life/Zeyad/Portal/Dev Hub/C#/NatlusEngine/NatlusEngine/Content/../../../monogame-mastery-main/chapter-05/assets/png/Fighter.png</File>
+    <File>C:/Users/ZeyadAlsultan/Dropbox/Our Life/Zeyad/Portal/Dev Hub/C#/NatlusEngine/NatlusEngine/Content/../../../monogame-mastery-main/chapter-05/assets/png/splash.png</File>
     <File>C:/Users/ZeyadAlsultan/Dropbox/Our Life/Zeyad/Portal/Dev Hub/C#/NatlusEngine/NatlusEngine/Content/Barren.jpg</File>
   </SourceFiles>
   <DestFiles>
+    <File>Empty.png</File>
+    <File>Fighter.png</File>
+    <File>splash.png</File>
     <File xsi:nil="true" />
   </DestFiles>
 </SourceFileCollection>
