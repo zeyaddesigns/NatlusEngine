@@ -19,7 +19,7 @@ namespace States.Base
         private ContentManager _contentManager;
 
         // State-epecific loading and unload content at runtime
-        public abstract void LoadContent(ContentManager contentManager);
+        public abstract void LoadContent();
 
         // State-specific input handling
         public abstract void HandleInput();
