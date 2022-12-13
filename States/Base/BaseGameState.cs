@@ -15,10 +15,11 @@ namespace States.Base
         private readonly List<BaseGameObject> _gameObjects = new List<BaseGameObject>();
         public event EventHandler<BaseGameState> OnStateSwitched;
         public event EventHandler<Events> OnEventNotification;
+        private const string FallbackTexture = "Empty";
+        private ContentManager _contentManager;
 
         // State-epecific loading and unload content at runtime
         public abstract void LoadContent(ContentManager contentManager);
-        public abstract void UnloadContent(ContentManager contentManager);
 
         // State-specific input handling
         public abstract void HandleInput();
@@ -57,6 +58,27 @@ namespace States.Base
             {
                 gameObject.Render(spriteBatch);
             }
+        }
+
+        // Initializes the Content Manager variable
+        public void Initialize(ContentManager contentManager)
+        {
+            _contentManager = contentManager;
+        }
+
+        // To call the ContentManager's Unload method.
+        public void UnloadContent()
+        {
+            _contentManager.Unload();
+        }
+
+        // Wrapper around the loading of textures, includes a fallback 
+        // incase of a missing texture (this avoids an exception)
+        protected Texture2D LoadTexture(string textureName)
+        {
+            var texture = _contentManager.Load<Texture2D>(textureName);
+
+            return texture ?? _contentManager.Load<Texture2D>(FallbackTexture);
         }
     }
 }

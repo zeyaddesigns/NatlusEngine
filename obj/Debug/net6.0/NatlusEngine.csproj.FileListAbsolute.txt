@@ -23,3 +23,4 @@ C:\Users\ZeyadAlsultan\Dropbox\Our Life\Zeyad\Portal\Dev Hub\C#\NatlusEngine\Nat
 C:\Users\ZeyadAlsultan\Dropbox\Our Life\Zeyad\Portal\Dev Hub\C#\NatlusEngine\NatlusEngine\obj\Debug\net6.0\NatlusEngine.pdb
 C:\Users\ZeyadAlsultan\Dropbox\Our Life\Zeyad\Portal\Dev Hub\C#\NatlusEngine\NatlusEngine\obj\Debug\net6.0\NatlusEngine.genruntimeconfig.cache
 C:\Users\ZeyadAlsultan\Dropbox\Our Life\Zeyad\Portal\Dev Hub\C#\NatlusEngine\NatlusEngine\obj\Debug\net6.0\ref\NatlusEngine.dll
+C:\Users\ZeyadAlsultan\Dropbox\Our Life\Zeyad\Portal\Dev Hub\C#\NatlusEngine\NatlusEngine\bin\Debug\net6.0\Content\Barren.xnb
