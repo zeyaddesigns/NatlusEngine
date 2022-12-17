@@ -17,6 +17,8 @@ namespace States.Base
         public event EventHandler<Events> OnEventNotification;
         private const string FallbackTexture = "Empty";
         private ContentManager _contentManager;
+        protected int _viewportHeight;
+        protected int _viewportWidth;
 
         // State-epecific loading and unload content at runtime
         public abstract void LoadContent();
@@ -61,9 +63,11 @@ namespace States.Base
         }
 
         // Initializes the Content Manager variable
-        public void Initialize(ContentManager contentManager)
+        public void Initialize(ContentManager contentManager, int viewportWidth, int viewportHeight)
         {
             _contentManager = contentManager;
+            _viewportHeight = viewportHeight;
+            _viewportWidth = viewportWidth;
         }
 
         // To call the ContentManager's Unload method.

@@ -11,7 +11,6 @@ namespace States
     {
         public override void LoadContent()
         {
-
             AddGameObject(new SplashImage(LoadTexture("splash")));
         }
 

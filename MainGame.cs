@@ -40,7 +40,7 @@ namespace NatlusEngine
         {
             _graphics.PreferredBackBufferWidth = DESIGNED_RESOLUTION_WIDTH;
             _graphics.PreferredBackBufferHeight = DESIGNED_RESOLUTION_HEIGHT;
-            _graphics.IsFullScreen = true;
+            _graphics.IsFullScreen = false;
             _graphics.ApplyChanges();
 
             _renderTarget = new RenderTarget2D(_graphics.GraphicsDevice, DESIGNED_RESOLUTION_WIDTH, DESIGNED_RESOLUTION_HEIGHT, false,
@@ -142,7 +142,7 @@ namespace NatlusEngine
             }
 
             _currentGameState = gameState;
-            _currentGameState.Initialize(Content);
+            _currentGameState.Initialize(Content, _graphics.GraphicsDevice.Viewport.Width, _graphics.GraphicsDevice.Viewport.Height);
             _currentGameState.LoadContent();
             _currentGameState.OnStateSwitched += CurrentGameState_OnStateSwitched;
             _currentGameState.OnEventNotification += _currentGameState_OnEventNotification;
