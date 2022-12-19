@@ -1,9 +1,8 @@
 ﻿using Objects;
 using States.Base;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Content;
-using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
+using Input.Base;
+using Input;
+
 
 namespace States
 {
@@ -14,14 +13,20 @@ namespace States
             AddGameObject(new SplashImage(LoadTexture("splash")));
         }
 
-        public override void HandleInput()
+        public override void HandleInput(Microsoft.Xna.Framework.GameTime gameTime)
         {
-            var state = Keyboard.GetState();
-
-            if (state.IsKeyDown(Keys.Enter))
+            InputManager.GetCommands(cmd =>
             {
-                SwitchState(new GameplayState());
-            }
+                if (cmd is SplashInputCommand.GameSelect)
+                {
+                    SwitchState(new GameplayState());
+                }
+            });
+        }
+
+        protected override void SetInputManager()
+        {
+            InputManager = new InputManager(new SplashInputMapper());
         }
     }
 }

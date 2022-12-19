@@ -4,9 +4,11 @@ using System.Linq;
 
 using Enum;
 using Objects.Base;
+using Input.Base;
 
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework;
 
 namespace States.Base
 {
@@ -19,12 +21,13 @@ namespace States.Base
         private ContentManager _contentManager;
         protected int _viewportHeight;
         protected int _viewportWidth;
+        protected InputManager InputManager { get; set; }
 
         // State-epecific loading and unload content at runtime
         public abstract void LoadContent();
 
         // State-specific input handling
-        public abstract void HandleInput();
+        public abstract void HandleInput(GameTime gameTime);
 
         // Triggers an event that our MainGame class will respond to
         // by unloading the current state and then loading the new state.
@@ -68,6 +71,8 @@ namespace States.Base
             _contentManager = contentManager;
             _viewportHeight = viewportHeight;
             _viewportWidth = viewportWidth;
+
+            SetInputManager();
         }
 
         // To call the ContentManager's Unload method.
@@ -84,5 +89,7 @@ namespace States.Base
 
             return texture ?? _contentManager.Load<Texture2D>(FallbackTexture);
         }
+
+        protected abstract void SetInputManager();
     }
 }
