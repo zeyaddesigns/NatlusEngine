@@ -6,6 +6,9 @@ using Microsoft.Xna.Framework;
 using Input.Base;
 using Input;
 using System;
+using Microsoft.Xna.Framework.Graphics;
+using System.Collections.Generic;
+using Objects.Base;
 
 namespace States
 {
@@ -15,9 +18,18 @@ namespace States
         private const string BackgroundTexture = "Barren";
         private PlayerSprite _playerSprite;
 
+        private const string BulletTexture = "bullet";
+        private Texture2D _bulletTexture;
+        private List<BulletSprite> _bulletList;
+
+        private bool _isShooting;
+        private TimeSpan _lastShotAt;
+
         public override void LoadContent()
         {
             _playerSprite = new PlayerSprite(LoadTexture(PlayerFighter));
+            _bulletTexture = LoadTexture(BulletTexture);
+            _bulletList = new List<BulletSprite>();
 
             AddGameObject(new TerrainBackground(LoadTexture(BackgroundTexture)));
             AddGameObject(_playerSprite);
@@ -26,6 +38,38 @@ namespace States
             var playerXPos = (_viewportWidth / 2) - (_playerSprite.Width / 2);
             var playerYPos = (_viewportHeight) - (_playerSprite.Height + 50);
             _playerSprite.Position = new Vector2(playerXPos, playerYPos);
+        }
+
+        public override void Update(GameTime gameTime)
+        {
+            foreach (var bullet in _bulletList)
+            {
+                bullet.MoveUp();
+            }
+
+            // can't shoot more than every 0.2 seconds
+            if (_lastShotAt != null && gameTime.TotalGameTime - _lastShotAt > TimeSpan.FromSeconds(0.2))
+            {
+                _isShooting = false;
+            }
+
+            // get rid of bullets that have gone out of view
+            var newBulletList = new List<BulletSprite>();
+            foreach (var bullet in _bulletList)
+            {
+                var bulletStillOnScreen = bullet.Position.Y > -30;
+
+                if (bulletStillOnScreen)
+                {
+                    newBulletList.Add(bullet);
+                }
+                else
+                {
+                    RemoveGameObject(bullet);
+                }
+            }
+
+            _bulletList = newBulletList;
         }
 
         public override void HandleInput(GameTime gameTime)
@@ -47,6 +91,11 @@ namespace States
                 {
                     _playerSprite.MoveRight();
                     KeepPlayerInBounds();
+                }
+
+                if (cmd is GameplayInputCommand.PlayerShoots)
+                {
+                    Shoot(gameTime);
                 }
             });
         }
@@ -77,6 +126,35 @@ namespace States
             {
                 _playerSprite.Position = new Vector2(_playerSprite.Position.X, _viewportHeight - _playerSprite.Height);
             }
+        }
+
+        private void Shoot(GameTime gameTime)
+        {
+            if (!_isShooting)
+            {
+                CreateBullets();
+                _isShooting = true;
+                _lastShotAt = gameTime.TotalGameTime;
+            }
+        }
+
+        private void CreateBullets()
+        {
+            var bulletSpriteLeft = new BulletSprite(_bulletTexture);
+            var bulletSpriteRight = new BulletSprite(_bulletTexture);
+
+            var bulletY = _playerSprite.Position.Y + 30;
+            var bulletLeftX = _playerSprite.Position.X + _playerSprite.Width / 2 - 40;
+            var bulletRightX = _playerSprite.Position.X + _playerSprite.Width / 2 + 10;
+
+            bulletSpriteLeft.Position = new Vector2(bulletLeftX, bulletY);
+            bulletSpriteRight.Position = new Vector2(bulletRightX, bulletY);
+
+            _bulletList.Add(bulletSpriteLeft);
+            _bulletList.Add(bulletSpriteRight);
+
+            AddGameObject(bulletSpriteLeft);
+            AddGameObject(bulletSpriteRight);
         }
     }
 }

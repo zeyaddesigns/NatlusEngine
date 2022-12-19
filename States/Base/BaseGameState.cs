@@ -29,6 +29,8 @@ namespace States.Base
         // State-specific input handling
         public abstract void HandleInput(GameTime gameTime);
 
+        public virtual void Update(GameTime gameTime) { }
+
         // Triggers an event that our MainGame class will respond to
         // by unloading the current state and then loading the new state.
         // At the next game loop iteration, the new state’s Update and Draw
@@ -52,6 +54,11 @@ namespace States.Base
         protected void AddGameObject(BaseGameObject gameObject)
         {
             _gameObjects.Add(gameObject);
+        }
+
+        protected void RemoveGameObject(BaseGameObject gameObject)
+        {
+            _gameObjects.Remove(gameObject);
         }
 
         // iterate through all the game objects we want to render on the

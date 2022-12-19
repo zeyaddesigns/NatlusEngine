@@ -71,6 +71,7 @@ namespace NatlusEngine
         protected override void Update(GameTime gameTime)
         {
             _currentGameState.HandleInput(gameTime);
+            _currentGameState.Update(gameTime);
 
             base.Update(gameTime);
         }
