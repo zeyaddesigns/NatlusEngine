@@ -81,6 +81,18 @@ namespace States
                     NotifyEvent(Events.GAME_QUIT);
                 }
 
+                if (cmd is GameplayInputCommand.PlayerMoveUp)
+                {
+                    _playerSprite.MoveUp();
+                    KeepPlayerInBounds();
+                }
+
+                if (cmd is GameplayInputCommand.PlayerMoveDown)
+                {
+                    _playerSprite.MoveDown();
+                    KeepPlayerInBounds();
+                }
+
                 if (cmd is GameplayInputCommand.PlayerMoveLeft)
                 {
                     _playerSprite.MoveLeft();

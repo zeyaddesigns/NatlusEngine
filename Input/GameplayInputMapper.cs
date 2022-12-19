@@ -30,6 +30,16 @@ namespace Input
                 commands.Add(new GameplayInputCommand.PlayerShoots());
             }
 
+            if (state.IsKeyDown(Keys.Up))
+            {
+                commands.Add(new GameplayInputCommand.PlayerMoveUp());
+            }
+
+            if (state.IsKeyDown(Keys.Down))
+            {
+                commands.Add(new GameplayInputCommand.PlayerMoveDown());
+            }
+
             return commands;
         }
     }

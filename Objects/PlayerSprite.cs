@@ -13,6 +13,16 @@ namespace Objects
             _texture = texture;
         }
 
+        public void MoveUp()
+        {
+            Position = new Vector2(Position.X, Position.Y - PLAYER_SPEED);
+        }
+
+        public void MoveDown()
+        {
+            Position = new Vector2(Position.X, Position.Y + PLAYER_SPEED);
+        }
+
         public void MoveLeft()
         {
             Position = new Vector2(Position.X - PLAYER_SPEED, Position.Y);
