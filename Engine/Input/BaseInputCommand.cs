@@ -1,4 +1,4 @@
-﻿namespace Input.Base
+﻿namespace NatlusEngine.Engine.Input
 {
     public class BaseInputCommand { }
 }

@@ -1,10 +1,9 @@
-﻿using Objects;
-using States.Base;
-using Input.Base;
-using Input;
+﻿using NatlusEngine.Objects;
+using NatlusEngine.States.Gameplay;
+using NatlusEngine.Engine.States;
+using NatlusEngine.Engine.Input;
 
-
-namespace States
+namespace NatlusEngine.States.Splash
 {
     public class SplashState : BaseGameState
     {

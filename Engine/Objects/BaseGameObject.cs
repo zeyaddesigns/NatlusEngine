@@ -1,8 +1,8 @@
-﻿using Enum;
+﻿using NatlusEngine.Engine.States;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace Objects.Base
+namespace NatlusEngine.Engine.Objects
 {
     public class BaseGameObject
     {
@@ -18,7 +18,7 @@ namespace Objects.Base
             set { _position = value; }
         }
 
-        public virtual void OnNotify(Events eventType) { }
+        public virtual void OnNotify(BaseGameStateEvent gameEvent) { }
 
         public virtual void Render(SpriteBatch spriteBatch)
         {

@@ -1,7 +1,7 @@
-﻿using Objects.Base;
-using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework.Graphics;
+using NatlusEngine.Engine.Objects;
 
-namespace Objects
+namespace NatlusEngine.Objects
 {
     public class SplashImage : BaseGameObject
     {

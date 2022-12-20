@@ -1,16 +1,15 @@
-﻿using Enum;
-using States.Base;
-using Microsoft.Xna.Framework.Input;
-using Objects;
-using Microsoft.Xna.Framework;
-using Input.Base;
-using Input;
-using System;
-using Microsoft.Xna.Framework.Graphics;
-using System.Collections.Generic;
-using Objects.Base;
+﻿using NatlusEngine.Engine.Input;
+using NatlusEngine.Engine.States;
+using NatlusEngine.Objects;
+using NatlusEngine.States.Gameplay;
 
-namespace States
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
+using Microsoft.Xna.Framework.Graphics;
+using System;
+using System.Collections.Generic;
+
+namespace NatlusEngine.States.Gameplay
 {
     public class GameplayState : BaseGameState
     {
@@ -35,8 +34,8 @@ namespace States
             AddGameObject(_playerSprite);
 
             // position the player in the middle of the screen, at the bottom, leaving a slight gap at the bottom
-            var playerXPos = (_viewportWidth / 2) - (_playerSprite.Width / 2);
-            var playerYPos = (_viewportHeight) - (_playerSprite.Height + 50);
+            var playerXPos = _viewportWidth / 2 - _playerSprite.Width / 2;
+            var playerYPos = _viewportHeight - (_playerSprite.Height + 50);
             _playerSprite.Position = new Vector2(playerXPos, playerYPos);
         }
 
@@ -78,7 +77,7 @@ namespace States
             {
                 if (cmd is GameplayInputCommand.GameExit)
                 {
-                    NotifyEvent(Events.GAME_QUIT);
+                    NotifyEvent(new BaseGameStateEvent.GameQuit());
                 }
 
                 if (cmd is GameplayInputCommand.PlayerMoveUp)

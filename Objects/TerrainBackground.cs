@@ -1,8 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Objects.Base;
+using NatlusEngine.Engine.Objects;
 
-namespace Objects
+namespace NatlusEngine.Objects
 {
     public class TerrainBackground: BaseGameObject
     {

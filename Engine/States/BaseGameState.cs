@@ -1,22 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-
-using Enum;
-using Objects.Base;
-using Input.Base;
-
+using NatlusEngine.Engine.Input;
+using NatlusEngine.Engine.Objects;
+//using NatlusEngine.Engine.Sound;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework;
 
-namespace States.Base
+
+namespace NatlusEngine.Engine.States
 {
     public abstract class BaseGameState
     {
         private readonly List<BaseGameObject> _gameObjects = new List<BaseGameObject>();
         public event EventHandler<BaseGameState> OnStateSwitched;
-        public event EventHandler<Events> OnEventNotification;
+        public event EventHandler<BaseGameStateEvent> OnEventNotification;
         private const string FallbackTexture = "Empty";
         private ContentManager _contentManager;
         protected int _viewportHeight;
@@ -35,13 +35,13 @@ namespace States.Base
         // by unloading the current state and then loading the new state.
         // At the next game loop iteration, the new state’s Update and Draw
         // methods will start being called.
-        protected void NotifyEvent(Events eventType, object argument = null)
+        protected void NotifyEvent(BaseGameStateEvent gameEvent)
         {
-            OnEventNotification?.Invoke(this, eventType);
+            OnEventNotification?.Invoke(this, gameEvent);
 
             foreach (var gameObject in _gameObjects)
             {
-                gameObject.OnNotify(eventType);
+                gameObject.OnNotify(gameEvent);
             }
         }
         protected void SwitchState(BaseGameState gameState)

@@ -1,8 +1,7 @@
 ﻿using Microsoft.Xna.Framework.Input;
-using Microsoft.Xna.Framework.Input.Touch;
 using System.Collections.Generic;
 
-namespace Input.Base
+namespace NatlusEngine.Engine.Input
 {
     public class BaseInputMapper
     {

@@ -1,12 +1,9 @@
-﻿using System;
-using Enum;
-using States;
-using States.Base;
+﻿using NatlusEngine.Engine.States;
+using NatlusEngine.States;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
 
-namespace NatlusEngine
+namespace NatlusEngine.Engine
 {
     /// <summary>
     /// This is the main type for your game.
@@ -17,17 +14,28 @@ namespace NatlusEngine
         private SpriteBatch _spriteBatch;
 
         private BaseGameState _currentGameState;
+        private BaseGameState _firstGameState;
         private RenderTarget2D _renderTarget;
         private Rectangle _renderScaleRectangle;
-        private const int DESIGNED_RESOLUTION_WIDTH = 1280;
-        private const int DESIGNED_RESOLUTION_HEIGHT = 720;
-        private const float DESIGNED_RESOLUTION_ASPECT_RATIO = DESIGNED_RESOLUTION_WIDTH / (float)DESIGNED_RESOLUTION_HEIGHT;
+        private int _DesignedResolutionWidth;
+        private int _DesignedResolutionHeight;
+        private float _designedResolutionAspectRatio;
 
-        public MainGame()
+        public MainGame(int width, int height, BaseGameState firstGameState)
         {
-            _graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
+            _graphics = new GraphicsDeviceManager(this)
+            {
+                PreferredBackBufferWidth = width,
+                PreferredBackBufferHeight = height,
+                IsFullScreen = false
+            };
+
             IsMouseVisible = true;
+            _firstGameState = firstGameState;
+            _DesignedResolutionWidth = width;
+            _DesignedResolutionHeight = height;
+            _designedResolutionAspectRatio = width / (float)height;
         }
 
         /// <summary>
@@ -38,12 +46,12 @@ namespace NatlusEngine
         /// </summary>
         protected override void Initialize()
         {
-            _graphics.PreferredBackBufferWidth = DESIGNED_RESOLUTION_WIDTH;
-            _graphics.PreferredBackBufferHeight = DESIGNED_RESOLUTION_HEIGHT;
+            _graphics.PreferredBackBufferWidth = _DesignedResolutionWidth;
+            _graphics.PreferredBackBufferHeight = _DesignedResolutionHeight;
             _graphics.IsFullScreen = false;
             _graphics.ApplyChanges();
 
-            _renderTarget = new RenderTarget2D(_graphics.GraphicsDevice, DESIGNED_RESOLUTION_WIDTH, DESIGNED_RESOLUTION_HEIGHT, false,
+            _renderTarget = new RenderTarget2D(_graphics.GraphicsDevice, _DesignedResolutionWidth, _DesignedResolutionHeight, false,
                 SurfaceFormat.Color, DepthFormat.None, 0, RenderTargetUsage.DiscardContents);
 
             _renderScaleRectangle = GetScaleRectangle();
@@ -60,7 +68,7 @@ namespace NatlusEngine
             // Create a new SpriteBatch, which can be used to draw textures.
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            SwitchGameState(new SplashState());
+            SwitchGameState(_firstGameState);
         }
 
         /// <summary>
@@ -112,16 +120,16 @@ namespace NatlusEngine
 
             Rectangle scaleRectangle;
 
-            if (actualAspectRatio <= DESIGNED_RESOLUTION_ASPECT_RATIO)
+            if (actualAspectRatio <= _designedResolutionAspectRatio)
             {
-                var presentHeight = (int)(Window.ClientBounds.Width / DESIGNED_RESOLUTION_ASPECT_RATIO + variance);
+                var presentHeight = (int)(Window.ClientBounds.Width / _designedResolutionAspectRatio + variance);
                 var barHeight = (Window.ClientBounds.Height - presentHeight) / 2;
 
                 scaleRectangle = new Rectangle(0, barHeight, Window.ClientBounds.Width, presentHeight);
             }
             else
             {
-                var presentWidth = (int)(Window.ClientBounds.Height * DESIGNED_RESOLUTION_ASPECT_RATIO + variance);
+                var presentWidth = (int)(Window.ClientBounds.Height * _designedResolutionAspectRatio + variance);
                 var barWidth = (Window.ClientBounds.Width - presentWidth) / 2;
 
                 scaleRectangle = new Rectangle(barWidth, 0, presentWidth, Window.ClientBounds.Height);
@@ -151,11 +159,11 @@ namespace NatlusEngine
             SwitchGameState(e);
         }
 
-        private void _currentGameState_OnEventNotification(object sender, Enum.Events e)
+        private void _currentGameState_OnEventNotification(object sender, BaseGameStateEvent e)
         {
             switch (e)
             {
-                case Events.GAME_QUIT:
+                case BaseGameStateEvent.GameQuit _:
                     Exit();
                     break;
             }

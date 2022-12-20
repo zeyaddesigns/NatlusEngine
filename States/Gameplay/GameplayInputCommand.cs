@@ -1,9 +1,9 @@
-﻿using Input.Base;
+﻿using NatlusEngine.Engine.Input;
 
-namespace Input
+namespace NatlusEngine.States.Gameplay
 {
-    public class GameplayInputCommand : BaseInputCommand 
-    { 
+    public class GameplayInputCommand : BaseInputCommand
+    {
         public class GameExit : GameplayInputCommand { }
         public class PlayerMoveUp : GameplayInputCommand { }
         public class PlayerMoveDown : GameplayInputCommand { }

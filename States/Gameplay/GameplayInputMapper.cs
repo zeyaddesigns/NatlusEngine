@@ -1,8 +1,8 @@
-﻿using Input.Base;
-using Microsoft.Xna.Framework.Input;
+﻿using Microsoft.Xna.Framework.Input;
+using NatlusEngine.Engine.Input;
 using System.Collections.Generic;
 
-namespace Input
+namespace NatlusEngine.States.Gameplay
 {
     public class GameplayInputMapper : BaseInputMapper
     {
