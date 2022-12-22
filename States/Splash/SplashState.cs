@@ -2,6 +2,7 @@
 using NatlusEngine.Input;
 using NatlusEngine.Engine.States;
 using NatlusEngine.Engine.Input;
+using Microsoft.Xna.Framework;
 
 namespace NatlusEngine.States
 {
@@ -22,6 +23,8 @@ namespace NatlusEngine.States
                 }
             });
         }
+
+        public override void UpdateGameState(GameTime _) { }
 
         protected override void SetInputManager()
         {

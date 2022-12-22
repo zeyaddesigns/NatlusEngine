@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using NatlusEngine.Engine.Input;
 using NatlusEngine.Engine.Objects;
-//using NatlusEngine.Engine.Sound;
+
+using NatlusEngine.Engine.Sound;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Content;
@@ -22,14 +23,17 @@ namespace NatlusEngine.Engine.States
         protected int _viewportHeight;
         protected int _viewportWidth;
         protected InputManager InputManager { get; set; }
+        protected SoundManager _soundManager = new SoundManager();
 
-        // State-epecific loading and unload content at runtime
         public abstract void LoadContent();
-
-        // State-specific input handling
         public abstract void HandleInput(GameTime gameTime);
+        public abstract void UpdateGameState(GameTime gameTime);
 
-        public virtual void Update(GameTime gameTime) { }
+        public void Update(GameTime gameTime)
+        {
+            UpdateGameState(gameTime);
+            _soundManager.PlaySoundtrack();
+        }
 
         // Triggers an event that our MainGame class will respond to
         // by unloading the current state and then loading the new state.
@@ -72,7 +76,6 @@ namespace NatlusEngine.Engine.States
             }
         }
 
-        // Initializes the Content Manager variable
         public void Initialize(ContentManager contentManager, int viewportWidth, int viewportHeight)
         {
             _contentManager = contentManager;
@@ -82,7 +85,6 @@ namespace NatlusEngine.Engine.States
             SetInputManager();
         }
 
-        // To call the ContentManager's Unload method.
         public void UnloadContent()
         {
             _contentManager.Unload();

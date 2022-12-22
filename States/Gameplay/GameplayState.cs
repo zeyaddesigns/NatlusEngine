@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
+using Microsoft.Xna.Framework.Audio;
 
 namespace NatlusEngine.Input
 {
@@ -37,9 +38,14 @@ namespace NatlusEngine.Input
             var playerXPos = _viewportWidth / 2 - _playerSprite.Width / 2;
             var playerYPos = _viewportHeight - (_playerSprite.Height + 50);
             _playerSprite.Position = new Vector2(playerXPos, playerYPos);
+
+            // load soundtracks into sound manager
+            var track1 = LoadSound("FutureAmbient_1").CreateInstance();
+            var track2 = LoadSound("FutureAmbient_2").CreateInstance();
+            _soundManager.SetSoundtrack(new List<SoundEffectInstance>() { track1, track2 });
         }
 
-        public override void Update(GameTime gameTime)
+        public override void UpdateGameState(GameTime gameTime)
         {
             foreach (var bullet in _bulletList)
             {
