@@ -2,7 +2,7 @@
 using NatlusEngine.Engine.Input;
 using System.Collections.Generic;
 
-namespace NatlusEngine.States.Gameplay
+namespace NatlusEngine.Input
 {
     public class GameplayInputMapper : BaseInputMapper
     {

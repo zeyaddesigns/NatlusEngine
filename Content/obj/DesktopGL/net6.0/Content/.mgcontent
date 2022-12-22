@@ -9,11 +9,19 @@
     <File>C:/Users/ZeyadAlsultan/Dropbox/Our Life/Zeyad/Portal/Dev Hub/C#/NatlusEngine/NatlusEngine/Content/../../../monogame-mastery-main/chapter-05/assets/png/splash.png</File>
     <File>C:/Users/ZeyadAlsultan/Dropbox/Our Life/Zeyad/Portal/Dev Hub/C#/NatlusEngine/NatlusEngine/Content/Barren.jpg</File>
     <File>C:/Users/ZeyadAlsultan/Dropbox/Our Life/Zeyad/Portal/Dev Hub/C#/NatlusEngine/NatlusEngine/Content/bullet.png</File>
+    <File>C:/Users/ZeyadAlsultan/Dropbox/Our Life/Zeyad/Portal/Dev Hub/C#/NatlusEngine/NatlusEngine/Content/bulletSound.wav</File>
+    <File>C:/Users/ZeyadAlsultan/Dropbox/Our Life/Zeyad/Portal/Dev Hub/C#/NatlusEngine/NatlusEngine/Content/emptySound.wav</File>
+    <File>C:/Users/ZeyadAlsultan/Dropbox/Our Life/Zeyad/Portal/Dev Hub/C#/NatlusEngine/NatlusEngine/Content/FutureAmbient_1.wav</File>
+    <File>C:/Users/ZeyadAlsultan/Dropbox/Our Life/Zeyad/Portal/Dev Hub/C#/NatlusEngine/NatlusEngine/Content/FutureAmbient_2.wav</File>
   </SourceFiles>
   <DestFiles>
     <File>Empty.png</File>
     <File>Fighter.png</File>
     <File>splash.png</File>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
   </DestFiles>

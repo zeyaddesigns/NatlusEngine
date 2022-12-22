@@ -2,7 +2,7 @@
 using NatlusEngine.Engine.Input;
 using System.Collections.Generic;
 
-namespace NatlusEngine.States.Splash
+namespace NatlusEngine.Input
 {
     public class SplashInputMapper : BaseInputMapper
     {

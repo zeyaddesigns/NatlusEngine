@@ -1,5 +1,5 @@
 ﻿using NatlusEngine.Engine.States;
-using NatlusEngine.States;
+using NatlusEngine.Input;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 

@@ -73,3 +73,27 @@
 /processorParam:TextureFormat=Color
 /build:bullet.png
 
+#begin bulletSound.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:bulletSound.wav
+
+#begin emptySound.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:emptySound.wav
+
+#begin FutureAmbient_1.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:FutureAmbient_1.wav
+
+#begin FutureAmbient_2.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:FutureAmbient_2.wav
+

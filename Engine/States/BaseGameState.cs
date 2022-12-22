@@ -98,5 +98,10 @@ namespace NatlusEngine.Engine.States
         }
 
         protected abstract void SetInputManager();
+
+        protected SoundEffect LoadSound(string soundName)
+        {
+            return _contentManager.Load<SoundEffect>(soundName);
+        }
     }
 }

@@ -1,6 +1,6 @@
 ﻿using NatlusEngine.Engine.Input;
 
-namespace NatlusEngine.States.Gameplay
+namespace NatlusEngine.Input
 {
     public class GameplayInputCommand : BaseInputCommand
     {

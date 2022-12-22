@@ -1,9 +1,9 @@
 ﻿using NatlusEngine.Objects;
-using NatlusEngine.States.Gameplay;
+using NatlusEngine.Input;
 using NatlusEngine.Engine.States;
 using NatlusEngine.Engine.Input;
 
-namespace NatlusEngine.States.Splash
+namespace NatlusEngine.States
 {
     public class SplashState : BaseGameState
     {

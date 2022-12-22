@@ -1,15 +1,15 @@
 ﻿using NatlusEngine.Engine.Input;
 using NatlusEngine.Engine.States;
 using NatlusEngine.Objects;
-using NatlusEngine.States.Gameplay;
+using NatlusEngine.Input;
 
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Audio;
+//using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 
-namespace NatlusEngine.States.Gameplay
+namespace NatlusEngine.Input
 {
     public class GameplayState : BaseGameState
     {

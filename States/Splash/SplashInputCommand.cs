@@ -1,6 +1,6 @@
 ﻿using NatlusEngine.Engine.Input;
 
-namespace NatlusEngine.States.Splash
+namespace NatlusEngine.Input
 {
     public class SplashInputCommand : BaseInputCommand
     {

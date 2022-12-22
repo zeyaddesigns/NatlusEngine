@@ -28,3 +28,7 @@ C:\Users\ZeyadAlsultan\Dropbox\Our Life\Zeyad\Portal\Dev Hub\C#\NatlusEngine\Nat
 C:\Users\ZeyadAlsultan\Dropbox\Our Life\Zeyad\Portal\Dev Hub\C#\NatlusEngine\NatlusEngine\bin\Debug\net6.0\Content\Fighter.xnb
 C:\Users\ZeyadAlsultan\Dropbox\Our Life\Zeyad\Portal\Dev Hub\C#\NatlusEngine\NatlusEngine\bin\Debug\net6.0\Content\splash.xnb
 C:\Users\ZeyadAlsultan\Dropbox\Our Life\Zeyad\Portal\Dev Hub\C#\NatlusEngine\NatlusEngine\bin\Debug\net6.0\Content\bullet.xnb
+C:\Users\ZeyadAlsultan\Dropbox\Our Life\Zeyad\Portal\Dev Hub\C#\NatlusEngine\NatlusEngine\bin\Debug\net6.0\Content\bulletSound.xnb
+C:\Users\ZeyadAlsultan\Dropbox\Our Life\Zeyad\Portal\Dev Hub\C#\NatlusEngine\NatlusEngine\bin\Debug\net6.0\Content\emptySound.xnb
+C:\Users\ZeyadAlsultan\Dropbox\Our Life\Zeyad\Portal\Dev Hub\C#\NatlusEngine\NatlusEngine\bin\Debug\net6.0\Content\FutureAmbient_1.xnb
+C:\Users\ZeyadAlsultan\Dropbox\Our Life\Zeyad\Portal\Dev Hub\C#\NatlusEngine\NatlusEngine\bin\Debug\net6.0\Content\FutureAmbient_2.xnb
