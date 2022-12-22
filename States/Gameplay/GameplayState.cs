@@ -9,6 +9,7 @@ using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework.Audio;
+using NatlusEngine.States.Gameplay;
 
 namespace NatlusEngine.Input
 {
@@ -38,6 +39,10 @@ namespace NatlusEngine.Input
             var playerXPos = _viewportWidth / 2 - _playerSprite.Width / 2;
             var playerYPos = _viewportHeight - (_playerSprite.Height + 50);
             _playerSprite.Position = new Vector2(playerXPos, playerYPos);
+
+            // load sound effects and register in the sound manager
+            var bulletSound = LoadSound("bulletSound");
+            _soundManager.RegisterSound(new GameplayEvents.PlayerShoots(), bulletSound);
 
             // load soundtracks into sound manager
             var track1 = LoadSound("FutureAmbient_1").CreateInstance();
@@ -152,6 +157,8 @@ namespace NatlusEngine.Input
                 CreateBullets();
                 _isShooting = true;
                 _lastShotAt = gameTime.TotalGameTime;
+
+                NotifyEvent(new GameplayEvents.PlayerShoots());
             }
         }
 
